@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Abroad Study | Premium Higher Studies Consultancy</title>
+    <meta name="description" content="Expert guidance for higher studies in Russia and China. Your dream university abroad starts here.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBg: '#7A0C22',        /* Deep Maroon Background */
+                        brandCharcoal: '#540515',  /* Darker Crimson Card Depth */
+                        brandBeige: '#FDFBF7',     /* Cream Highlight */
+                        brandCream: '#F5EFEB',     /* Cream Text Accents */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.25)',
+                        'brand-glow': '0 0 20px rgba(253, 251, 247, 0.1)',
+                        'premium-fab': '0 10px 30px -5px rgba(0, 0, 0, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #7A0C22;
+            color: #F5EFEB;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(84, 5, 21, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(253, 251, 247, 0.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(253, 251, 247, 0.25);
+            box-shadow: 0 0 30px rgba(253, 251, 247, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #F5EFEB 0%, #FDFBF7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #7A0C22;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #540515;
+            border: 2px solid #7A0C22;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FDFBF7;
+        }
+    </style>
+</head>
+<body x-data="{ mobileMenuOpen: false }">
+
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brandCream/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-[80vh] right-1/4 w-[600px] h-[600px] bg-brandBeige/5 rounded-full blur-[150px] pointer-events-none"></div>
+    <nav class="sticky top-0 z-50 glass-card border-b border-white/5 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <a href="#" class="flex items-center flex-shrink-0">
+                <div class="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+                    <img class="w-full h-full object-contain" src="logo.png" alt="Hope Abroad Study Logo">
+                </div>
+            </a>
+            <a href="index.html" class="text-xs uppercase tracking-widest text-brandCream/80 hover:text-white flex items-center gap-2 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home Page
+            </a>
+        </div>
+    </nav>
+    <section id="programs-section" class="py-16 max-w-7xl mx-auto px-6">
+        <div class="space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-6 gap-4">
+                <div>
+                    <span class="text-xs text-brandCream/60 uppercase tracking-widest block mb-1">Premium Catalog</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-brandCream tracking-wide">Explore Curated Programs</h2>
+                </div>
+                <div class="text-sm font-light text-brandCream/70 max-w-md md:text-right">
+                    Instantly browse through premium academic streams registered across Russia & China.
+                </div>
+            </div>
+            
+            <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-brandBg text-brandBeige rounded-full shadow-premium-fab border border-white/10 transition-all duration-300 hover:bg-brandCharcoal hover:scale-110 active:scale-95 group" aria-label="Chat with us on WhatsApp">
+        <i data-lucide="message-circle" class="w-7 h-7 transition-transform group-hover:rotate-12"></i>
+    </a>
+
+    <script>
+        const universityDatabase = [
+            { 
+                id: 1, 
+                name: "Peoples' Friendship University of Russia named after Patrice Lumumba",
+                region: "Moscow",
+                country: "Russia", 
+                discipline: "Medicine & MBBS",
+                cost: 4200,
+                image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=600" 
+            },
+            { 
+                id: 2, 
+                name: "Moscow State Linguistic University",
+                region: "Moscow",
+                country: "Russia", 
+                discipline: "Arts & Languages", 
+                cost: 2800,
+                image: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=600" 
+            },
+            { 
+                id: 3, 
+                name: "National Research Lobachevsky State University of Nizhny Novgorod",
+                region: "Volga",
+                country: "Russia", 
+                discipline: "Engineering & Tech", 
+                cost: 2900,
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=600" 
+            },
+            { 
+                id: 4, 
+                name: "Kazan (Volga region) Federal University",
+                region: "Volga",
+                country: "Russia", 
+                discipline: "Medicine & MBBS",
+                cost: 3500,
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600" 
+            },
+            { 
+                id: 5, 
+                name: "National Research University Higher School of Economics",
+                region: "Saint Petersburg",
+                country: "Russia", 
+                discipline: "Engineering & Tech", 
+                cost: 4800,
+                image: "https://images.unsplash.com/photo-1607237138185-eedd996e5b09?auto=format&fit=crop&q=80&w=600" 
+            },
+            { 
+                id: 6, 
+                name: "St Petersburg University",
+                region: "Saint Petersburg",
+                country: "Russia", 
+                discipline: "Medicine & MBBS",
+                cost: 2990,
+                image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600" 
+            },
+           
+        ];
+
+        function renderUniversities() {
+            const grid = document.getElementById('resultsGrid');
+            grid.innerHTML = '';
+
+            universityDatabase.forEach(uni => {
+                const card = document.createElement('div');
+                card.className = "bg-gradient-to-b from-brandCharcoal to-brandCharcoal/40 border border-white/5 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-white/20 transition-all duration-300 shadow-lg group";
+                card.innerHTML = `
+                    <div>
+                        <div class="h-44 w-full overflow-hidden relative bg-black/20">
+                            <img src="${uni.image}" alt="${uni.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brandCharcoal/80 to-transparent"></div>
+                            <span class="absolute top-3 left-3 text-[10px] tracking-widest font-bold uppercase px-2.5 py-1 rounded-md bg-brandBg text-brandCream border border-white/10 shadow-md">${uni.country}</span>
+                        </div>
+                        
+                        <div class="p-5 space-y-3">
+                            <div class="flex items-center text-xs text-brandCream/50 font-medium">
+                                <i class="inline-block w-3 h-3 mr-1" data-lucide="map-pin"></i>${uni.region}
+                            </div>
+                            <h4 class="font-serif text-lg text-brandCream font-semibold tracking-wide leading-snug min-h-[56px] line-clamp-2">${uni.name}</h4>
+                            <p class="text-xs text-brandCream/60 tracking-wider uppercase font-medium font-sans">${uni.discipline}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="px-5 pb-5 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <div>
+                            <p class="text-[10px] uppercase text-brandCream/40 tracking-wider">Tuition Fees</p>
+                            <p class="text-base font-bold text-brandCream">$${uni.cost.toLocaleString()} <span class="text-xs font-normal opacity-50">/ yr</span></p>
+                        </div>
+                        <a href="/application.html" class="text-xs bg-brandBeige text-brandBg font-bold px-4 py-2 rounded-lg hover:bg-white transition-colors">Apply</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        window.onload = () => { renderUniversities(); };
+    </script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

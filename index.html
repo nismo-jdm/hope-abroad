@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Abroad Study | Premium Higher Studies Consultancy</title>
+    <meta name="description" content="Expert guidance for higher studies in Russia and China. Your dream university abroad starts here.">
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />x
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBg: '#7A0C22',        /* Deep Maroon Background */
+                        brandCharcoal: '#540515',  /* Darker Crimson for cards/depth */
+                        brandBeige: '#FDFBF7',     /* Cream Highlight */
+                        brandCream: '#F5EFEB',     /* Cream Text/Accents */
+                        brandGold: '#FDFBF7',      /* Replaced gold with clean cream for branding consistency */
+                        brandMaroon: '#7A0C22',
+                        brandCrimsonCard: '#630618',
+                        brandCream: '#FDFBF7',
+                        brandCreamText: '#F5EFEB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.25)',
+                        'brand-glow': '0 0 20px rgba(253, 251, 247, 0.1)',
+                    }
+                }
+            }
+        }
+        
+    </script>
+
+    <style>
+        body {
+            background-color: #7A0C22;
+            color: #F5EFEB;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(84, 5, 21, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(253, 251, 247, 0.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(253, 251, 247, 0.25);
+            box-shadow: 0 0 30px rgba(253, 251, 247, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #F5EFEB 0%, #FDFBF7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #7A0C22;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #540515;
+            border: 2px solid #7A0C22;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FDFBF7;
+        }
+    </style>
+</head>
+<body x-data="{ mobileMenuOpen: false }">
+
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brandCream/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-[120vh] right-1/4 w-[600px] h-[600px] bg-brandBeige/5 rounded-full blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-[350vh] left-10 w-[400px] h-[400px] bg-brandCream/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <nav class="sticky top-0 z-50 glass-card border-b border-white/5 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <a href="#" class="flex items-center flex-shrink-0">
+                <div class="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+                    <img class="w-full h-full object-contain" src="logo.png" alt="Hope Abroad Study Logo">
+                </div>
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-8 text-sm uppercase tracking-wider font-medium text-brandCream/80">
+                <a href="#about" class="hover:text-white transition-colors">About Us</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Success Stories</a>
+                <a href="#destinations" class="px-5 py-2.5 bg-brandBeige text-[#7A0C22] text-xs font-bold rounded-full hover:bg-white hover:scale-105 transition-all duration-300">Destinations</a>
+            </div>
+
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-brandCream focus:outline-none">
+                <i data-lucide="menu" x-show="!mobileMenuOpen" class="w-6 h-6"></i>
+                <i data-lucide="x" x-show="mobileMenuOpen" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden fixed inset-x-0 top-20 bg-brandCharcoal border-b border-white/10 p-6 space-y-4 shadow-xl z-40">
+            <a href="#about" @click="mobileMenuOpen = false" class="block text-brandCream hover:text-white transition-colors">About Us</a>
+            <a href="#services" @click="mobileMenuOpen = false" class="block text-brandCream hover:text-white transition-colors">Services</a>
+            <a href="#testimonials" @click="mobileMenuOpen = false" class="block text-brandCream hover:text-white transition-colors">Success Stories</a>
+            <a href="#destinations" @click="mobileMenuOpen = false" class="inline-block w-full text-center py-3 bg-brandBeige text-[#7A0C22] font-bold rounded-md">Destinations</a>
+        </div>
+    </nav>
+
+    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-6">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-brandBg/40 via-brandBg/80 to-brandBg z-10"></div>
+            <div class="absolute inset-0 bg-black/20 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover scale-105 animate-[pulse_8s_infinite_alternate] opacity-25">
+        </div>
+
+        <div class="relative z-20 max-w-5xl mx-auto text-center space-y-8">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-card border-white/10 text-xs tracking-widest text-brandCream uppercase">
+                <span class="w-1.5 h-1.5 bg-brandCream rounded-full animate-ping"></span>
+                <span>Beyond borders, beyond limits</span>
+            </div>
+            
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none text-gradient">
+                Your Dream University <br><span class="italic font-light">Abroad Starts Here</span>
+            </h1>
+
+            <p class="text-brandCream/80 text-lg md:text-xl max-w-2xl mx-auto font-light tracking-wide">
+                Expert guidance for premier higher studies in Russia and China. Turn aspirations into world-class global careers.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#destinations" class="w-full sm:w-auto px-8 py-4 bg-brandBeige text-[#7A0C22] font-semibold rounded-full hover:bg-white transition-all duration-300 shadow-brand-glow tracking-wide text-sm uppercase">
+                    Destinations
+                </a>
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 glass-card text-brandCream font-semibold rounded-full hover:bg-white/10 transition-all duration-300 tracking-wide text-sm uppercase">
+                    Services
+                </a>
+            </div>
+        </div>
+
+       
+    </header>
+
+    <hr class="border-white/5 max-w-7xl mx-auto">
+
+    <section id="about" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-semibold tracking-widest text-brandCream/70 uppercase">Who We Are</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-brandCream leading-tight">Empowering Global Generations</h2>
+                <div class="w-20 h-[1px] bg-brandCream/40"></div>
+            </div>
+            <div class="lg:col-span-7">
+                <p class="text-brandCream/90 text-lg leading-relaxed font-light mb-8">
+                    We are a trusted higher studies consultancy dedicated to helping students achieve their academic dreams in Russia and China. With a strong commitment to quality guidance and student success, we assist aspiring students in finding the right universities, courses, and career paths abroad.
+                </p>
+                <p class="text-brandCream/70 text-base leading-relaxed font-light">
+                    Our mission is to make international education accessible, affordable, and stress-free for every student. From selecting the best university to visa processing and travel assistance, we provide complete support throughout the journey.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div class="glass-card p-8 rounded-2xl transition-all duration-500 group">
+                <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-brandCream mb-6 group-hover:bg-brandBeige group-hover:text-[#7A0C22] transition-all duration-300">
+                    <i data-lucide="target" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-serif text-2xl text-brandCream mb-4">Our Mission</h3>
+                <p class="text-brandCream/70 font-light text-sm leading-relaxed">Helping students achieve global educational success through trusted guidance and complete support.</p>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl transition-all duration-500 group">
+                <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-brandCream mb-6 group-hover:bg-brandBeige group-hover:text-[#7A0C22] transition-all duration-300">
+                    <i data-lucide="eye" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-serif text-2xl text-brandCream mb-4">Our Vision</h3>
+                <p class="text-brandCream/70 font-light text-sm leading-relaxed">To become a leading international education consultancy connecting students with world-class opportunities abroad.</p>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl transition-all duration-500 group">
+                <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-brandCream mb-6 group-hover:bg-brandBeige group-hover:text-[#7A0C22] transition-all duration-300">
+                    <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-serif text-2xl text-brandCream mb-4">Why Choose Us</h3>
+                <ul class="text-brandCream/70 font-light text-sm space-y-2">
+                    <li class="flex items-center space-x-2"><span class="w-1 h-1 bg-brandCream rounded-full"></span> <span>Trusted counseling & personalized guidance</span></li>
+                    <li class="flex items-center space-x-2"><span class="w-1 h-1 bg-brandCream rounded-full"></span> <span>Affordable study options & full visa support</span></li>
+                    <li class="flex items-center space-x-2"><span class="w-1 h-1 bg-brandCream rounded-full"></span> <span>Unwavering student-first approach</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24" id="destinations">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <span class="text-brandCream/70 text-xs font-semibold tracking-widest uppercase mb-4 block">Global Partnerships</span>
+            <h2 class="font-serif text-4xl md:text-5xl text-brandCream mb-6">Our Handpicked Destinations</h2>
+            <p class="text-brandCream/80 text-base md:text-lg font-light tracking-wide">Explore elite, universally recognized educational pathways optimized for modern student career success.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="group relative overflow-hidden rounded-3xl h-[600px] border border-white/5 shadow-2xl">
+                <img alt="Study in Russia" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=600"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#540515] via-[#7A0C22]/40 to-transparent"></div>
+                
+                <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full space-y-6">
+                    <div>
+                        <h3 class="font-serif text-3xl md:text-4xl text-brandCream mb-3">Russia</h3>
+                        <p class="text-brandCream/80 text-sm font-light max-w-sm leading-relaxed">A major international core for globally accredited engineering and advanced medical breakthroughs.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 max-w-md pt-2">
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="briefcase-medical" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Medicine / MBBS</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="cpu" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Engineering</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="banknote" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Affordable Fees</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="globe" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Global Degree</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="/russia-index.html" class="inline-flex items-center text-brandBeige border-b border-brandBeige/40 pb-1 text-xs font-bold uppercase tracking-widest hover:text-white hover:border-white transition-all duration-300">
+                            Explore Russian Universities
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl h-[600px] border border-white/5 shadow-2xl">
+                <img alt="Study in China" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=1000"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#540515] via-[#7A0C22]/40 to-transparent"></div>
+                
+                <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full space-y-6">
+                    <div>
+                        <h3 class="font-serif text-3xl md:text-4xl text-brandCream mb-3">China</h3>
+                        <p class="text-brandCream/80 text-sm font-light max-w-sm leading-relaxed">A global powerhouse driving technological superiority and fully integrated corporate campuses.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 max-w-md pt-2">
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="braces" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Tech Hubs</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="award" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Scholarships</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="languages" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Global Exposure</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-brandCream/90">
+                            <i data-lucide="wallet" class="w-5 h-5 text-brandBeige opacity-80"></i>
+                            <span class="text-xs tracking-wide font-medium">Budget Living</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="/china-index.html" class="inline-flex items-center text-brandBeige border-b border-brandBeige/40 pb-1 text-xs font-bold uppercase tracking-widest hover:text-white hover:border-white transition-all duration-300">
+                            Explore Chinese Universities
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="services" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+            <div class="space-y-4">
+                <span class="text-xs font-semibold tracking-widest text-brandCream/70 uppercase">End-to-End Solutions</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-brandCream">Our Concierge Services</h2>
+            </div>
+            <p class="text-brandCream/70 max-w-md font-light mt-4 md:mt-0">We curate seamless, high-touch logistical and strategic pipelines ensuring minimal friction from matching to enrollment.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="glass-card p-8 rounded-2xl group transition-all duration-300">
+                <div class="text-brandCream mb-6"><i data-lucide="file-text" class="w-8 h-8"></i></div>
+                <h3 class="font-serif text-xl text-brandCream mb-2">Admission Assistance</h3>
+                <p class="text-brandCream/60 text-xs font-light leading-relaxed">Direct university applications management with error-free compliance routing.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl group transition-all duration-300">
+                <div class="text-brandCream mb-6"><i data-lucide="user-check" class="w-8 h-8"></i></div>
+                <h3 class="font-serif text-xl text-brandCream mb-2">Visa Processing</h3>
+                <p class="text-brandCream/60 text-xs font-light leading-relaxed">High-success rate structural visa legal review and file submissions.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl group transition-all duration-300">
+                <div class="text-brandCream mb-6"><i data-lucide="compass" class="w-8 h-8"></i></div>
+                <h3 class="font-serif text-xl text-brandCream mb-2">Career Counseling</h3>
+                <p class="text-brandCream/60 text-xs font-light leading-relaxed">Strategic profiling to pair academic choices with high-growth market targets.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl group transition-all duration-300">
+                <div class="text-brandCream mb-6"><i data-lucide="layers" class="w-8 h-8"></i></div>
+                <h3 class="font-serif text-xl text-brandCream mb-2">Scholarship Guidance</h3>
+                <p class="text-brandCream/60 text-xs font-light leading-relaxed">Access and custom applications mapping for state and institutional funding tracks.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl group transition-all duration-300">
+                <div class="text-brandCream mb-6"><i data-lucide="home" class="w-8 h-8"></i></div>
+                <h3 class="font-serif text-xl text-brandCream mb-2">Accommodation Support</h3>
+                <p class="text-brandCream/60 text-xs font-light leading-relaxed">Vetted institutional housing coordination and secure residential integration.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl group transition-all duration-300">
+                <div class="text-brandCream mb-6"><i data-lucide="plane" class="w-8 h-8"></i></div>
+                <h3 class="font-serif text-xl text-brandCream mb-2">Travel & Pre-Departure</h3>
+                <p class="text-brandCream/60 text-xs font-light leading-relaxed">Complete structural briefing, transit alignment, and airport reception handling.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brandCharcoal/40 relative overflow-hidden border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                <div class="space-y-2">
+                    <span class="font-serif text-4xl md:text-5xl text-brandCream block font-bold">500+</span>
+                    <span class="text-xs uppercase tracking-widest text-brandCream/70 font-light">Successful Admissions</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="font-serif text-4xl md:text-5xl text-brandCream block font-bold">40+</span>
+                    <span class="text-xs uppercase tracking-widest text-brandCream/70 font-light">Partner Universities</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="font-serif text-4xl md:text-5xl text-brandCream block font-bold">99%</span>
+                    <span class="text-xs uppercase tracking-widest text-brandCream/70 font-light">Visa Success Rate</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="font-serif text-4xl md:text-5xl text-brandCream block font-bold">100%</span>
+                    <span class="text-xs uppercase tracking-widest text-brandCream/70 font-light">Student Satisfaction</span>
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]"></div>
+    </section>
+
+    <section id="testimonials" class="py-24 bg-brandCharcoal/10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-semibold tracking-widest text-brandCream/70 uppercase">Verified Excellence</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-brandCream">Stories of Achievement</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between space-y-8">
+                    <p class="text-brandCream/80 font-light italic text-sm leading-relaxed">
+                        "The entire transition to First Moscow State Medical University felt effortless. From visa sorting to campus arrival handling, Hope provided flawless clarity."
+                    </p>
+                    <div class="flex items-center space-x-4 border-t border-white/5 pt-4">
+                        <div class="w-11 h-11 bg-white/10 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Student Profile" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-brandCream">Elena Rostova</h4>
+                            <span class="text-xs text-brandCream/70 block">MD Candidate, Russia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between space-y-8">
+                    <p class="text-brandCream/80 font-light italic text-sm leading-relaxed">
+                        "Securing a technological breakthrough master scholarship in Tsinghua University was a long-shot dream. Hope crafted an flawless application footprint."
+                    </p>
+                    <div class="flex items-center space-x-4 border-t border-white/5 pt-4">
+                        <div class="w-11 h-11 bg-white/10 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Student Profile" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-brandCream">Aravind Kumar</h4>
+                            <span class="text-xs text-brandCream/70 block">M.Tech Scholar, China</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between space-y-8">
+                    <p class="text-brandCream/80 font-light italic text-sm leading-relaxed">
+                        "Extremely precise counseling options. They transparently mapped structural cost frameworks which made picking affordable universities direct and stress-free."
+                    </p>
+                    <div class="flex items-center space-x-4 border-t border-white/5 pt-4">
+                        <div class="w-11 h-11 bg-white/10 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Student Profile" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-brandCream">Zarah Al-Fahim</h4>
+                            <span class="text-xs text-brandCream/70 block">B.Eng Student, China</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+            <span class="text-xs font-semibold tracking-widest text-brandCream/70 uppercase">#HopeAbroadStudy</span>
+            <h2 class="font-serif text-4xl md:text-5xl text-brandCream">Instagram Community Hub</h2>
+            <p class="text-brandCream/70 text-sm font-light">Follow our journey live. Visa approvals, airport departure captures, and student lifestyle snapshots.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="relative rounded-2xl overflow-hidden group border border-white/5">
+                <img src="poster 1.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-60">
+                <div class="absolute inset-0 bg-brandBg/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="instagram" class="w-6 h-6 text-brandCream"></i></div>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden group border border-white/5">
+                <img src="poster 2.jpg" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-60">
+                <div class="absolute inset-0 bg-brandBg/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="instagram" class="w-6 h-6 text-brandCream"></i></div>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden group border border-white/5">
+                <img src="poster 3.jpg" alt="Campus Living" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-60">
+                <div class="absolute inset-0 bg-brandBg/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="instagram" class="w-6 h-6 text-brandCream"></i></div>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden group border border-white/5">
+                <img src="poster 4.jpg" alt="Campus Living" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-60">
+                <div class="absolute inset-0 bg-brandBg/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="instagram" class="w-6 h-6 text-brandCream"></i></div>
+            </div>
+        </div>
+        
+        <div class="text-center pt-8">
+            <a href="https://www.instagram.com/hope_studyabroad/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-sm text-brandCream hover:text-white transition-colors underline decoration-brandCream/30 underline-offset-4">
+                <span>View Official Instagram Feed</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </section>
+<!-- nilanil venda 
+    <section class="py-24 bg-brandCharcoal/20 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="space-y-4">
+                    <span class="text-xs text-brandCream/70 tracking-wider uppercase font-medium">Global Updates</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-brandCream">Knowledge & Global Insights</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="space-y-4 group">
+                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-brandBg border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=600" alt="Scholarship updates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70">
+                    </div>
+                    <span class="text-xs text-brandCream/80 tracking-wider uppercase font-medium">Scholarships</span>
+                    <h3 class="font-serif text-xl text-brandCream group-hover:text-white transition-colors"><a href="#">Russia State Scholarship Strategy Allocations</a></h3>
+                </article>
+
+                <article class="space-y-4 group">
+                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-brandBg border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600" alt="Visa guide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70">
+                    </div>
+                    <span class="text-xs text-brandCream/80 tracking-wider uppercase font-medium">Visa Guides</span>
+                    <h3 class="font-serif text-xl text-brandCream group-hover:text-white transition-colors"><a href="#">Demystifying Student Visa Regulations for China</a></h3>
+                </article>
+
+                <article class="space-y-4 group">
+                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-brandBg border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600" alt="Student lifestyle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70">
+                    </div>
+                    <span class="text-xs text-brandCream/80 tracking-wider uppercase font-medium">Student Life</span>
+                    <h3 class="font-serif text-xl text-brandCream group-hover:text-white transition-colors"><a href="#">Cost of Living Analysis: Moscow vs. Shanghai</a></h3>
+                </article>
+            </div>
+        </div>
+    </section>
+-->
+    <section class="py-24 max-w-4xl mx-auto px-6" x-data="{ activeFaq: null }">
+        <div class="text-center mb-16 space-y-4">
+            <span class="text-xs font-semibold tracking-widest text-brandCream/70 uppercase">Clear Information</span>
+            <h2 class="font-serif text-4xl text-brandCream">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="space-y-4">
+            <div class="glass-card rounded-2xl overflow-hidden transition-colors">
+                <button @click="activeFaq = (activeFaq === 1 ? null : 1)" class="w-full px-8 py-5 flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-brandCream font-medium text-sm md:text-base">How can I apply to universities in Russia or China?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brandCream transition-transform duration-300" :class="activeFaq === 1 ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="activeFaq === 1" x-collapse class="px-8 pb-5 text-brandCream/70 text-xs md:text-sm font-light leading-relaxed">
+                    You can start directly by booking a consultation with us. We review your academic files, map out target courses matching your profile, and systematically process your structural applications directly to partner institutions.
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl overflow-hidden transition-colors">
+                <button @click="activeFaq = (activeFaq === 2 ? null : 2)" class="w-full px-8 py-5 flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-brandCream font-medium text-sm md:text-base">What documents are required?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brandCream transition-transform duration-300" :class="activeFaq === 2 ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="activeFaq === 2" x-collapse class="px-8 pb-5 text-brandCream/70 text-xs md:text-sm font-light leading-relaxed">
+                    Generally, you will require your academic certificates/transcripts, a valid international passport, passport-sized photographs, and relevant medical clearance health reports. Course-specific requirements vary.
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl overflow-hidden transition-colors">
+                <button @click="activeFaq = (activeFaq === 3 ? null : 3)" class="w-full px-8 py-5 flex items-center justify-between text-left focus:outline-none">
+                    <span class="text-brandCream font-medium text-sm md:text-base">Do you provide structural visa assistance?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-brandCream transition-transform duration-300" :class="activeFaq === 3 ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="activeFaq === 3" x-collapse class="px-8 pb-5 text-brandCream/70 text-xs md:text-sm font-light leading-relaxed">
+                    Yes, we offer complete end-to-end legal visa curation. This includes visa documentation compilation, structural embassy interview preparation, and filing management with embassy offices.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div class="lg:col-span-5 space-y-8">
+                <div class="space-y-4">
+                    <span class="text-xs font-semibold tracking-widest text-brandCream/70 uppercase">Connect Locally</span>
+                    <h2 class="font-serif text-4xl text-brandCream">We are here to help you</h2>
+                </div>
+                
+                <div class="space-y-6 text-sm font-light text-brandCream/80">
+                    <div class="flex items-start space-x-4">
+                        <i data-lucide="mail" class="w-5 h-5 text-brandCream mt-0.5"></i>
+                        <div>
+                            <span class="block text-xs text-brandCream/70 uppercase font-semibold">Email Admissions</span>
+                            <a href="mailto:sinancherupurath1@gmail.com" class="hover:text-white transition-colors">sinancherupurath1@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <i data-lucide="phone" class="w-5 h-5 text-brandCream mt-0.5"></i>
+                        <div>
+                            <span class="block text-xs text-brandCream/70 uppercase font-semibold">Call Channels</span>
+                            <a href="tel:+91 8943764130" class="hover:text-white transition-colors">+91 8943764130"</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative bg-brandBg border-t border-white/10 pt-16 pb-8 text-brandCream font-sans overflow-hidden">
+    <div class="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-brandCharcoal rounded-full blur-[120px] pointer-events-none opacity-40"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-12 border-b border-white/5">
+            <div class="space-y-2">
+                <span class="text-[10px] uppercase tracking-widest text-brandCream/50 font-bold">Connect Locally</span>
+                <h3 class="font-serif text-3xl md:text-4xl font-normal text-brandBeige tracking-wide">We are here to help you</h3>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-6 md:justify-end items-start sm:items-center">
+                <a href="mailto:sinancherupurath1@gmail.com" class="flex items-center space-x-4 group p-2 rounded-xl transition-all hover:bg-brandCharcoal/40">
+                    <div class="w-11 h-11 rounded-lg bg-brandCharcoal flex items-center justify-center border border-white/5">
+                        <i data-lucide="mail" class="w-5 h-5 text-brandBeige opacity-80 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-wider text-brandCream/40 font-semibold">Email Admissions</p>
+                        <p class="text-sm font-medium text-brandCream/90 group-hover:text-white transition-colors">sinancherupurath1@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="tel:+918943764130" class="flex items-center space-x-4 group p-2 rounded-xl transition-all hover:bg-brandCharcoal/40">
+                    <div class="w-11 h-11 rounded-lg bg-brandCharcoal flex items-center justify-center border border-white/5">
+                        <i data-lucide="phone" class="w-5 h-5 text-brandBeige opacity-80 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-wider text-brandCream/40 font-semibold">Call Channels</p>
+                        <p class="text-sm font-medium text-brandCream/90 group-hover:text-white transition-colors">+91 8943764130</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16">
+            <div class="lg:col-span-5 space-y-6">
+                <div class="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+                    <img class="w-full h-full object-contain" src="logo.png" alt="Hope Abroad Study Logo">
+                </div>
+                <p class="text-xs font-light text-brandCream/60 leading-relaxed max-w-sm">
+                    Premium international pathways optimizing access to premium world-class medical and technology institutions across Russia and China.
+                </p>
+                <div class="flex items-center space-x-3 pt-2">
+                    <a href="#" aria-label="Instagram Profile Link" class="w-9 h-9 rounded-full bg-brandCharcoal/60 border border-white/5 flex items-center justify-center text-brandCream/60 hover:text-white hover:border-white/20 hover:scale-105 transition-all">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="Facebook Page Link" class="w-9 h-9 rounded-full bg-brandCharcoal/60 border border-white/5 flex items-center justify-center text-brandCream/60 hover:text-white hover:border-white/20 hover:scale-105 transition-all">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn Business Profile Link" class="w-9 h-9 rounded-full bg-brandCharcoal/60 border border-white/5 flex items-center justify-center text-brandCream/60 hover:text-white hover:border-white/20 hover:scale-105 transition-all">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <h4 class="text-xs uppercase tracking-widest text-brandBeige font-bold">Destinations</h4>
+                    <ul class="space-y-2.5 text-xs font-light text-brandCream/70">
+                        <li><a href="/russia-index.html" class="hover:text-white hover:underline decoration-white/20 transition-all">Study In Russia</a></li>
+                        <li><a href="/china-index.html" class="hover:text-white hover:underline decoration-white/20 transition-all">Study In China</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="text-xs uppercase tracking-widest text-brandBeige font-bold">Company</h4>
+                    <ul class="space-y-2.5 text-xs font-light text-brandCream/70">
+                        <li><a href="#about" class="hover:text-white hover:underline decoration-white/20 transition-all">About History</a></li>
+                        <li><a href="#services" class="hover:text-white hover:underline decoration-white/20 transition-all">Concierge Services</a></li>
+                        <li><a href="#testimonials" class="hover:text-white hover:underline decoration-white/20 transition-all">Success Stories</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4 col-span-2 sm:col-span-1">
+                    <h4 class="text-xs uppercase tracking-widest text-brandBeige font-bold">Operational Info</h4>
+                    <ul class="space-y-2.5 text-xs font-light text-brandCream/70">
+                        <li><span class="block text-brandCream/40">Mon - Sat Execution</span> 09:00 AM - 06:00 PM</li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Operations</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-brandCream/40 font-light">
+            <p>© 2026 Hope Abroad Study. All Rights Reserved. Designed for global academic routing.</p>
+            <div class="flex space-x-6">
+                <span>Beyond borders, beyond limits</span>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <a href="https://wa.me/+91 8943764130" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-brandBg text-brandBeige rounded-full shadow-premium-fab border border-white/10 transition-all duration-300 hover:bg-brandCharcoal hover:scale-110 active:scale-95 group" aria-label="Chat with us on WhatsApp">
+        <i data-lucide="message-circle" class="w-7 h-7 transition-transform group-hover:rotate-12"></i>
+    </a>
+    
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
