@@ -70,7 +70,9 @@
 </head>
 <body x-data="{ currentStep: 1, targetCountry: 'Russia' }" class="min-h-screen flex flex-col justify-between">
 
-    
+    <div class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-brandCream/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-brandBeige/5 rounded-full blur-[120px] pointer-events-none"></div>
+
     <nav class="glass-card border-b border-white/5 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center flex-shrink-0">
@@ -140,7 +142,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">First Given Name</label>
-                        <input id="firstName" type="text" required class="w-full form-input rounded-xl px-5 py-4 text-sm" placeholder="e.g. John">
+                        <input id="firstName" type="text" required class="w-full form-input rounded-xl px-5 py-4 text-sm" placeholder="e.g. ">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Last Surname Name</label>
@@ -326,8 +328,8 @@
         <span>© 2026 Hope Abroad Study. All Rights Reserved.</span>
     </footer>
 
-    <a href="https://wa.me/918943764130" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 group" aria-label="Support Desk Connection">
-        <i data-lucide="message-circle" class="w-7 h-7"></i>
+   <a href="https://wa.me/918943764130" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-brandBg text-brandBeige rounded-full shadow-premium-fab border border-white/10 transition-all duration-300 hover:bg-brandCharcoal hover:scale-110 active:scale-95 group" aria-label="Chat with us on WhatsApp">
+        <i data-lucide="message-circle" class="w-7 h-7 transition-transform group-hover:rotate-12"></i>
     </a>
 
     <script>
