@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -19,10 +18,10 @@
             theme: {
                 extend: {
                     colors: {
-                        brandBg: '#7A0C22',        /* Deep Maroon Background */
-                        brandCharcoal: '#540515',  /* Darker Crimson Card Depth */
-                        brandBeige: '#FDFBF7',     /* Cream Highlight */
-                        brandCream: '#F5EFEB',     /* Cream Text Accents */
+                        brandBg: '#7A0C22',        
+                        brandCharcoal: '#540515',  
+                        brandBeige: '#FDFBF7',     
+                        brandCream: '#F5EFEB',     
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -50,292 +49,79 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(253, 251, 247, 0.1);
         }
-        .form-input {
-            background: rgba(84, 5, 21, 0.4);
-            border: 1px solid rgba(253, 251, 247, 0.15);
-            color: #F5EFEB;
-            transition: all 0.3s ease;
-        }
-        .form-input:focus {
-            border-color: #FDFBF7;
-            box-shadow: 0 0 10px rgba(253, 251, 247, 0.1);
-            outline: none;
-        }
         .text-gradient {
             background: linear-gradient(135deg, #F5EFEB 0%, #FDFBF7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* Custom spinner for Google Form loading state */
+        .form-loader {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top: 3px solid #FDFBF7;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
-<body x-data="{ currentStep: 1, targetCountry: 'Russia' }" class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between">
 
-    <div class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-brandCream/5 rounded-full blur-[140px] pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-brandBeige/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-     <nav class="sticky top-0 z-50 glass-card border-b border-white/5 backdrop-blur-md transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            
-            <a href="#" class="flex items-center flex-shrink-0">
-                <div class="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+    
+    <nav class="glass-card border-b border-white/5 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+           
+                <div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center flex-shrink-0">
                     <img class="w-full h-full object-contain" src="logo.png" alt="Hope Abroad Study Logo">
                 </div>
-            </a>
-            <a href="index.html" class="text-xs uppercase tracking-widest text-brandCream/80 hover:text-white flex items-center gap-2 transition-colors">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home page
+            
+            <a href="index.html" class="text-[11px] md:text-xs uppercase tracking-widest text-brandCream/80 hover:text-white flex items-center gap-1.5 transition-colors">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Back to Homepage
             </a>
         </div>
     </nav>
 
-
-    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-12 md:py-16">
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8 md:py-12">
         
-        <div class="text-center space-y-3 mb-12">
-            <span class="text-xs tracking-widest text-brandCream/60 uppercase font-medium">Hope Study Abroad</span>
-            <h1 class="font-serif text-4xl md:text-5xl text-gradient font-semibold tracking-tight">Application Portal</h1>
-            <p class="text-brandCream/70 text-sm font-light max-w-md mx-auto">Fill out the details. Submitting will instantly format your request and open WhatsApp to send your file directly to our desk.</p>
+        <div class="text-center space-y-2 md:space-y-3 mb-8 md:mb-10">
+            <span class="text-[10px] md:text-xs tracking-widest text-brandCream/60 uppercase font-medium block">Secure Enrollment Server</span>
+            <h1 class="font-serif text-3xl md:text-5xl text-gradient font-semibold tracking-tight leading-tight">University Application Portal</h1>
+            <p class="text-brandCream/70 text-xs md:text-sm font-light max-w-md mx-auto px-2">Please fill out the official application processing registry below. Your submission data will automatically sync with our cloud admissions workspace.</p>
         </div>
 
-        <div class="max-w-lg mx-auto flex items-center justify-between mb-12 relative px-4">
-            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-white/10 z-0"></div>
-            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 h-[2px] bg-brandBeige transition-all duration-500 z-0" :style="'width: ' + ((currentStep - 1) * 50) + '%'"></div>
-
-            <div class="relative z-10 flex flex-col items-center">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-300"
-                     :class="currentStep >= 1 ? 'bg-brandBeige text-brandBg shadow-brand-glow' : 'bg-brandCharcoal border border-white/10 text-brandCream/60'">
-                    1
-                </div>
-                <span class="text-[10px] uppercase tracking-wider mt-2 font-medium" :class="currentStep >= 1 ? 'text-brandBeige' : 'text-brandCream/40'">Personal</span>
-            </div>
-
-            <div class="relative z-10 flex flex-col items-center">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-300"
-                     :class="currentStep >= 2 ? 'bg-brandBeige text-brandBg shadow-brand-glow' : 'bg-brandCharcoal border border-white/10 text-brandCream/60'">
-                    2
-                </div>
-                <span class="text-[10px] uppercase tracking-wider mt-2 font-medium" :class="currentStep >= 2 ? 'text-brandBeige' : 'text-brandCream/40'">Academic</span>
-            </div>
-
-            <div class="relative z-10 flex flex-col items-center">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-300"
-                     :class="currentStep >= 3 ? 'bg-brandBeige text-brandBg shadow-brand-glow' : 'bg-brandCharcoal border border-white/10 text-brandCream/60'">
-                    3
-                </div>
-                <span class="text-[10px] uppercase tracking-wider mt-2 font-medium" :class="currentStep >= 3 ? 'text-brandBeige' : 'text-brandCream/40'">Review & Send</span>
-            </div>
-        </div>
-
-        <form id="applicationForm" class="glass-card rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div class="glass-card rounded-2xl md:rounded-[2.5rem] p-2 md:p-6 shadow-2xl relative overflow-hidden min-h-[650px] flex items-center justify-center">
             
-            <div x-show="currentStep === 1" x-transition class="space-y-6">
-                <div class="border-b border-white/10 pb-4 mb-6">
-                    <h3 class="font-serif text-2xl text-brandCream">Personal Background Details</h3>
-                    <p class="text-xs text-brandCream/50 font-light">Ensure metrics match your international passport identity data.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">First Given Name</label>
-                        <input id="firstName" type="text" required class="w-full form-input rounded-xl px-5 py-4 text-sm" placeholder="e.g. John">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Last Surname Name</label>
-                        <input id="lastName" type="text" required class="w-full form-input rounded-xl px-5 py-4 text-sm" placeholder="e.g. Doe">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Contact Email Address</label>
-                        <input id="email" type="email" required class="w-full form-input rounded-xl px-5 py-4 text-sm" placeholder="johndoe@example.com">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Mobile Phone Number</label>
-                        <input id="phone" type="tel" required class="w-full form-input rounded-xl px-5 py-4 text-sm" placeholder="+1 (555) 000-0000">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Date of Birth</label>
-                        <input id="dob" type="date" required class="w-full form-input rounded-xl px-5 py-4 text-sm">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Passport Document ID Number</label>
-                        <input id="passport" type="text" required class="w-full form-input rounded-xl px-5 py-4 text-sm" placeholder="e.g. A00000000">
-                    </div>
-                </div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center space-y-3 pointer-events-none z-0">
+                <div class="form-loader"></div>
+                <p class="text-xs text-brandCream/40 tracking-wider uppercase">Loading Secure Document Pipeline...</p>
             </div>
 
-            <div x-show="currentStep === 2" x-transition class="space-y-6">
-                <div class="border-b border-white/10 pb-4 mb-6">
-                    <h3 class="font-serif text-2xl text-brandCream">Academic Intent & Routing</h3>
-                    <p class="text-xs text-brandCream/50 font-light">Select your preferred international institutional layout.</p>
-                </div>
+            <iframe 
+                class="relative z-10 w-full h-[700px] md:h-[800px] rounded-xl md:rounded-[1.5rem] border-0"
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdfu9v0_p9l0Lg0bE6bO6pC36tN3TjV0q58b6Z_E_YOUR_FORM_ID/viewform?embedded=true" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">
+                Loading Application Registry Form Frame...
+            </iframe>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Target Study Destination</label>
-                        <div class="relative">
-                            <select id="destination" x-model="targetCountry" class="w-full form-input rounded-xl pl-5 pr-10 py-4 text-sm appearance-none cursor-pointer">
-                                <option value="Russia">Russia</option>
-                                <option value="China">China</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brandCream/60"><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Preferred Institutional Track</label>
-                        <div class="relative">
-                            <select id="university" class="w-full form-input rounded-xl pl-5 pr-10 py-4 text-sm appearance-none cursor-pointer">
-                                <template x-if="targetCountry === 'Russia'">
-                                    <optgroup label="Russian Universities">
-                                        <option>Peoples' Friendship University of Russia named after Patrice Lumumba</option>
-                                        <option>Moscow State Linguistic University</option>
-                                        <option>National Research Lobachevsky State University</option>
-                                        <option>Kazan Federal University</option>
-                                        <option>Higher School of Economics (HSE)</option>
-                                        <option>St Petersburg University</option>
-                                    </optgroup>
-                                </template>
-                                <template x-if="targetCountry === 'China'">
-                                    <optgroup label="Chinese Universities">
-                                        <option>Tsinghua University School of Engineering</option>
-                                        <option>Peking University Medical Sciences</option>
-                                        <option>Zhejiang University</option>
-                                    </optgroup>
-                                </template>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brandCream/60"><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Academic Discipline</label>
-                        <div class="relative">
-                            <select id="discipline" class="w-full form-input rounded-xl pl-5 pr-10 py-4 text-sm appearance-none cursor-pointer">
-                                <option>Medicine & MBBS</option>
-                                <option>Engineering & Tech</option>
-                                <option>Arts & Languages</option>
-                                <option>Business Management</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brandCream/60"><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold tracking-wider uppercase text-brandCream/80 mb-2">Highest Completed Qualification</label>
-                        <div class="relative">
-                            <select id="qualification" class="w-full form-input rounded-xl pl-5 pr-10 py-4 text-sm appearance-none cursor-pointer">
-                                <option>High School / Senior Secondary Certificate</option>
-                                <option>Diploma Program Degree</option>
-                                <option>Bachelor's Degree Graduate</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brandCream/60"><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div x-show="currentStep === 3" x-transition class="space-y-6">
-                <div class="border-b border-white/10 pb-4 mb-6">
-                    <h3 class="font-serif text-2xl text-brandCream">Confirm WhatsApp Transmission</h3>
-                    <p class="text-xs text-brandCream/50 font-light">Your compiled application payload is ready to forward.</p>
-                </div>
-
-                <div class="bg-brandCharcoal/40 p-6 rounded-2xl border border-white/5 text-xs text-brandCream/70 space-y-4 font-light leading-relaxed">
-                    <p>1. Clicking the launch button below will open your native WhatsApp app directly prefilled with all standard metric values securely.</p>
-                    <p>2. Please make sure to attach your clear copies of transcripts and valid identification passport photos directly onto the message chain inside WhatsApp manually.</p>
-                </div>
-
-                <div class="flex items-start gap-3 pt-2">
-                    <input type="checkbox" id="agreeBox" required class="mt-1 accent-brandBg rounded border-white/10 bg-brandCharcoal">
-                    <label for="agreeBox" class="text-xs text-brandCream/80 font-light select-none cursor-pointer">
-                        I authorize Hope Abroad Study to process my profile evaluation requirements for overseas visa verification processing.
-                    </label>
-                </div>
-            </div>
-
-            <div class="mt-12 pt-6 border-t border-white/10 flex items-center justify-between gap-4">
-                <button type="button" 
-                        x-show="currentStep > 1" 
-                        @click="currentStep--" 
-                        class="px-6 py-3.5 bg-brandCharcoal border border-white/10 text-brandCream text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-brandBg hover:border-white/30 transition-all duration-300">
-                    Previous Step
-                </button>
-                <div x-show="currentStep === 1"></div>
-
-                <button type="button" 
-                        x-show="currentStep < 3" 
-                        @click="currentStep++" 
-                        class="px-8 py-3.5 bg-brandBeige text-brandBg text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-white shadow-lg transition-all duration-300 ml-auto">
-                    Continue Suite
-                </button>
-
-                <button type="submit" 
-                        x-show="currentStep === 3" 
-                        class="px-8 py-3.5 bg-green-600 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-green-500 shadow-brand-glow transition-all duration-300 ml-auto flex items-center gap-2">
-                    <i data-lucide="message-square" class="w-4 h-4"></i> Send via WhatsApp
-                </button>
-            </div>
-
-        </form>
+        </div>
     </main>
 
-    <footer class="bg-brandCharcoal/40 border-t border-white/5 py-8 text-center text-xs text-brandCream/40 w-full">
+    <footer class="bg-brandCharcoal/40 border-t border-white/5 py-6 text-center text-[10px] md:text-xs text-brandCream/40 w-full">
         <span>© 2026 Hope Abroad Study. All Rights Reserved.</span>
     </footer>
 
-    <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-brandBg text-brandBeige rounded-full shadow-xl border border-white/10 transition-all duration-300 hover:bg-brandCharcoal hover:scale-110 group" aria-label="Support Desk Connection">
-        <i data-lucide="message-circle" class="w-7 h-7 transition-transform group-hover:rotate-12"></i>
+    <a href="https://wa.me/8848987685" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-brandBg text-brandBeige rounded-full shadow-xl border border-white/10 transition-all duration-300 hover:bg-brandCharcoal hover:scale-110 active:scale-95 group" aria-label="Support Desk Desk Connection">
+        <i data-lucide="message-circle" class="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:rotate-12"></i>
     </a>
 
     <script>
         lucide.createIcons();
-
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if(!document.getElementById('agreeBox').checked) {
-                alert('Please accept the profile evaluation statement disclosure before executing forwarding tasks.');
-                return;
-            }
-
-            // Target Phone Number Setup (Use your company configuration format without + or spaces)
-            const whatsappNumber = 321654984651; // Replace with your actual phone number in international format (e.g., 88017XXXXXXXX)"; 
-
-            // Extract values cleanly out of DOM elements
-            const first = document.getElementById('firstName').value;
-            const last = document.getElementById('lastName').value;
-            const userEmail = document.getElementById('email').value;
-            const userPhone = document.getElementById('phone').value;
-            const userDob = document.getElementById('dob').value;
-            const passportNum = document.getElementById('passport').value;
-            const destCountry = document.getElementById('destination').value;
-            const selectedUni = document.getElementById('university').value;
-            const disc = document.getElementById('discipline').value;
-            const qual = document.getElementById('qualification').value;
-
-            // Generate beautifully formatted clean string block text
-            const msg = `🏛️ *NEW ADMISSION APPLICATION* 🏛️\n` +
-                        `--------------------------------------\n` +
-                        `👤 *Personal Profile*:\n` +
-                        `• Full Name: ${first} ${last}\n` +
-                        `• Date of Birth: ${userDob}\n` +
-                        `• Passport ID: ${passportNum}\n\n` +
-                        `📞 *Contact Info*:\n` +
-                        `• Phone: ${userPhone}\n` +
-                        `• Email: ${userEmail}\n\n` +
-                        `🎓 *Academic Track Selection*:\n` +
-                        `• Destination Country: ${destCountry}\n` +
-                        `• Target University: ${selectedUni}\n` +
-                        `• Discipline Track: ${disc}\n` +
-                        `• Qualification Base: ${qual}\n` +
-                        `--------------------------------------\n` +
-                        `⚠️ *Note:* Student transcript files will be dropped directly into this message block manually.`;
-
-            // Encapsulate safe window url structure
-            const targetURI = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-
-            // Dispatch external router processing action
-            window.open(targetURI, '_blank');
-        });
     </script>
 </body>
 </html>
-
