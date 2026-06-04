@@ -86,20 +86,16 @@
 </head>
 <body x-data="{ mobileMenuOpen: false }">
 
-    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brandCream/5 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-[120vh] right-1/4 w-[600px] h-[600px] bg-brandBeige/5 rounded-full blur-[150px] pointer-events-none"></div>
-    <div class="absolute top-[350vh] left-10 w-[400px] h-[400px] bg-brandCream/5 rounded-full blur-[100px] pointer-events-none"></div>
-
+    
     <nav class="sticky top-0 z-50 glass-card border-b border-white/5 backdrop-blur-md transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            
-            <a href="#" class="flex items-center flex-shrink-0">
+        
                 <div class="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
                     <img class="w-full h-full object-contain" src="logo.png" alt="Hope Abroad Study Logo">
                 </div>
-            </a>
             
             <div class="hidden lg:flex items-center space-x-8 text-sm uppercase tracking-wider font-medium text-brandCream/80">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
                 <a href="#about" class="hover:text-white transition-colors">About Us</a>
                 <a href="#services" class="hover:text-white transition-colors">Services</a>
                 <a href="#testimonials" class="hover:text-white transition-colors">Success Stories</a>
@@ -113,6 +109,7 @@
         </div>
 
         <div x-show="mobileMenuOpen" x-transition class="lg:hidden fixed inset-x-0 top-20 bg-brandCharcoal border-b border-white/10 p-6 space-y-4 shadow-xl z-40">
+            <a href="#home" class="hover:text-white transition-colors">Home</a>
             <a href="#about" @click="mobileMenuOpen = false" class="block text-brandCream hover:text-white transition-colors">About Us</a>
             <a href="#services" @click="mobileMenuOpen = false" class="block text-brandCream hover:text-white transition-colors">Services</a>
             <a href="#testimonials" @click="mobileMenuOpen = false" class="block text-brandCream hover:text-white transition-colors">Success Stories</a>
@@ -120,7 +117,7 @@
         </div>
     </nav>
 
-    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-6">
+    <header id="home" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-6">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-brandBg/40 via-brandBg/80 to-brandBg z-10"></div>
             <div class="absolute inset-0 bg-black/20 z-10"></div>
@@ -523,35 +520,7 @@
         </div>
     </section>
 
-    <section class="py-24 max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div class="lg:col-span-5 space-y-8">
-                <div class="space-y-4">
-                    <span class="text-xs font-semibold tracking-widest text-brandCream/70 uppercase">Connect Locally</span>
-                    <h2 class="font-serif text-4xl text-brandCream">We are here to help you</h2>
-                </div>
-                
-                <div class="space-y-6 text-sm font-light text-brandCream/80">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="mail" class="w-5 h-5 text-brandCream mt-0.5"></i>
-                        <div>
-                            <span class="block text-xs text-brandCream/70 uppercase font-semibold">Email Admissions</span>
-                            <a href="mailto:sinancherupurath1@gmail.com" class="hover:text-white transition-colors">sinancherupurath1@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="phone" class="w-5 h-5 text-brandCream mt-0.5"></i>
-                        <div>
-                            <span class="block text-xs text-brandCream/70 uppercase font-semibold">Call Channels</span>
-                            <a href="tel:+91 8943764130" class="hover:text-white transition-colors">+91 8943764130"</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+   
     <footer class="relative bg-brandBg border-t border-white/10 pt-16 pb-8 text-brandCream font-sans overflow-hidden">
     <div class="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-brandCharcoal rounded-full blur-[120px] pointer-events-none opacity-40"></div>
 
