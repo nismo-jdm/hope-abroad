@@ -76,18 +76,14 @@
         }
     </style>
 </head>
-<body x-data="{ mobileMenuOpen: false }">
+<body x-data="{ mobileMenuOpen: false }" class="">
 
-    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brandCream/5 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-[80vh] right-1/4 w-[600px] h-[600px] bg-brandBeige/5 rounded-full blur-[150px] pointer-events-none"></div>
-<nav class="sticky top-0 z-50 glass-card border-b border-white/5 backdrop-blur-md transition-all duration-300">
+    <nav class="sticky top-0 z-50 glass-card border-b border-white/5 backdrop-blur-md transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            
-            <a href="#" class="flex items-center flex-shrink-0">
+          
                 <div class="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
                     <img class="w-full h-full object-contain" src="logo.png" alt="Hope Abroad Study Logo">
                 </div>
-            </a>
             <a href="index.html" class="text-xs uppercase tracking-widest text-brandCream/80 hover:text-white flex items-center gap-2 transition-colors">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home Page
             </a>
@@ -202,7 +198,7 @@
                             <p class="text-[10px] uppercase text-brandCream/40 tracking-wider">Tuition Fees</p>
                             <p class="text-base font-bold text-brandCream">$${uni.cost.toLocaleString()} <span class="text-xs font-normal opacity-50">/ yr</span></p>
                         </div>
-                        <a href="#booking" class="text-xs bg-brandBeige text-brandBg font-bold px-4 py-2 rounded-lg hover:bg-white transition-colors">Apply</a>
+                        <a href="/application.html" class="text-xs bg-brandBeige text-brandBg font-bold px-4 py-2 rounded-lg hover:bg-white transition-colors">Apply</a>
                     </div>
                 `;
                 grid.appendChild(card);
