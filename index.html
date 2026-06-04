@@ -85,6 +85,33 @@
     </style>
 </head>
 <body x-data="{ mobileMenuOpen: false }">
+<div id="portal-preloader" class="fixed inset-0 z-[100] bg-brandBg flex flex-col items-center justify-center transition-all duration-700 ease-in-out opacity-100">
+        <div class="absolute w-[350px] h-[350px] bg-brandCharcoal rounded-full blur-[80px] pointer-events-none animate-pulse-slow"></div>
+        
+        <div class="relative flex flex-col items-center text-center space-y-6 max-w-sm px-6">
+            <div class="relative w-24 h-24 flex items-center justify-center">
+                <div class="absolute inset-0 border-2 border-brandBeige/10 border-t-brandBeige rounded-full animate-spin"></div>
+                <div class="w-16 h-16 rounded-full bg-brandCharcoal flex items-center justify-center p-2 shadow-xl border border-white/5">
+                    <img class="w-full h-full object-contain" src="logo.png" alt="Hope Logo" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <h2 class="font-serif text-2xl tracking-widest text-brandBeige uppercase font-semibold">HOPE</h2>
+                <p class="text-[10px] uppercase tracking-[0.25em] text-brandCream/40 font-bold">Abroad Study</p>
+            </div>
+
+            <p id="preloader-string-ticker" class="text-xs text-brandCream/60 font-light italic tracking-wide transition-opacity duration-300">
+                Initializing international admission secure channels...
+            </p>
+
+            <div class="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+                <div id="preloader-progress-bar" class="absolute left-0 top-0 h-full w-0 bg-brandBeige transition-all duration-300 ease-out"></div>
+            </div>
+        </div>
+    </div>
+
+
 
     
     <nav class="sticky top-0 z-50 glass-card border-b border-white/5 backdrop-blur-md transition-all duration-300">
@@ -620,6 +647,55 @@
 
     <script>
         lucide.createIcons();
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('portal-preloader');
+            const progress = document.getElementById('preloader-progress-bar');
+            const ticker = document.getElementById('preloader-string-ticker');
+
+            // Sequential status update strings
+            const microtasks = [
+                { limit: 25, label: "Connecting global portal nodes..." },
+                { limit: 55, label: "Structuring international curriculum vectors..." },
+                { limit: 85, label: "Syncing verified university pathways..." },
+                { limit: 100, label: "Secure gateway ready." }
+            ];
+
+            let currentPercentage = 0;
+            
+            // Linear progress tick acceleration
+            const progressInterval = setInterval(() => {
+                if (currentPercentage < 100) {
+                    currentPercentage += Math.floor(Math.random() * 4) + 2; 
+                    if(currentPercentage > 100) currentPercentage = 100;
+                    
+                    progress.style.width = `${currentPercentage}%`;
+
+                    // Update sub-text dynamically based on percentage milestones
+                    const currentTask = microtasks.find(t => currentPercentage <= t.limit);
+                    if (currentTask && ticker.textContent !== currentTask.label) {
+                        ticker.style.opacity = 0;
+                        setTimeout(() => {
+                            ticker.textContent = currentTask.label;
+                            ticker.style.opacity = 1;
+                        }, 150);
+                    }
+                }
+            }, 60);
+
+            // Execute clean fade-out transition once the page fully initializes
+            window.addEventListener('load', () => {
+                clearInterval(progressInterval);
+                progress.style.width = '100%';
+                ticker.textContent = "Secure gateway ready.";
+                
+                setTimeout(() => {
+                    preloader.classList.add('opacity-0', 'pointer-events-none');
+                    // Completely drop from layout to maximize performance
+                    setTimeout(() => preloader.style.display = 'none', 700);
+                }, 400);
+            });
+        });
     </script>
 </body>
 </html>
